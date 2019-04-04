@@ -1,5 +1,4 @@
-# ODBC-Access-to-SQL-Server
-ODBC Access to SQL server through IBM informix driver in R and Extracting dump of Tables
+# ODBC-Access-to-SQL-Server through IBM informix driver in R and Extracting dump of Tables
 
 We require library "ibmdbR","ODBC"
 
