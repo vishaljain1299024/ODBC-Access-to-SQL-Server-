@@ -1,0 +1,66 @@
+##CODE##
+
+
+
+library(ibmdbR)
+
+library (ODBC)
+
+driver.name <- "{IBM INFORMIX ODBC DRIVER (64-bit)}" 
+
+db.name <- "PlaceHolderForYourDatabseName"   
+
+host.name <- "PlaceHolderForYourHostName"
+port <-"PlaceHolderForPortNumber"
+
+user.name <-"PlaceHolderForYourusername"
+
+pwd <- "PlaceHolderForYourPassword"
+
+
+con.text <- paste("PlaceHolderForYourDSNName";DRIVER=",driver.name,
+
+                  ";Database=",db.name,
+                  
+		  ";Host=",host.name,
+                  
+		  ";Port=",port,
+                  
+                  ";PROTOCOL=PlaceHolderForYourProtocolName",  
+                  
+                  ";UID=", user.name,
+                  
+                  ";PWD=",pwd,sep="",
+                  
+                  ";CLIENT_LOCALE=en_US.UTF8",
+                  
+                  ";DB_LOCALE=en_US.57372")
+
+
+
+# Connect to using a odbc Driver Connection string to a remote database
+
+
+con <- idaConnect(con.text)
+
+
+
+# Extract Tablelist from Database
+
+Tablelist = sqlTables(con, schema = character)
+
+
+
+# Make a copy of tables in your local system
+
+list = Tablelist1$TABLE_NAME
+
+for (table in list){
+  
+	data <- sqlQuery(con, paste("SELECT * FROM (",table,")"))
+  
+	name = paste("PlaceholderForYourLocalDesktopPath",table,".csv")
+  
+	write.csv(data,paste("PlaceholderForYourLocalDesktopPath",table,".csv", sep=""))}
+
+
